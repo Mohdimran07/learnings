@@ -1,0 +1,34 @@
+Basics of JavaScript Objects
+	Understanding objects: Objects are collections of key-value pairs that store related data and functionality.
+	Creating objects: Use object literals ({}) or the new keyword to create objects.
+	Accessing object properties: Use dot notation (obj.prop) or bracket notation (obj['prop']) to access properties.
+	Adding and modifying properties: Assign values to new or existing properties to add or modify them.
+	Deleting properties: Use the delete operator to remove properties from an object.
+
+Advanced Object Manipulation Techniques.
+	Merging objects: Use Object.assign() or the spread operator (...) to merge properties from multiple objects.
+	Filtering objects: Use Object.keys() and Array.prototype.filter() to create a new object with a subset of properties.
+	Mapping object keys and values: Use Object.entries() and Array.prototype.reduce() to transform an object by mapping its keys and values.
+	Flattening nested objects: Use recursion and Object.assign() to flatten nested objects into a single level.
+	Immutable object updates: Use the spread operator (...) or Object.assign() to create new objects with updated properties.
+
+Object Prototypes and Inheritance
+	Understanding prototypes: Every object has a prototype, which is another object that serves as a template for the object.
+	Prototype chain: When accessing a property or method on an object, JavaScript searches the prototype chain until it finds the property or method.
+	Creating objects with prototypes: Use constructor functions or classes to create objects with shared prototypes.
+	Inheritance: Objects can inherit properties and methods from their prototypes, allowing for code reuse and polymorphism.
+
+Advanced Object Concepts
+	Object equality and comparison: Understand how object equality works and how to compare objects.
+	Garbage collection: JavaScript automatically manages memory using garbage collection, which removes objects that are no longer reachable.
+	Object methods and this: Methods are functions stored as object properties, and this refers to the object the method is called on.
+	Getters and setters: Define custom behavior for accessing and modifying object properties using getters and setters.
+
+Practical Applications of Objects
+	Creating complex data structures: Use objects to represent real-world entities and their relationships.
+	Implementing object-oriented design patterns: Apply design patterns like constructor, factory, and singleton to create modular and maintainable code.
+	Working with JSON: JSON (JavaScript Object Notation) is a lightweight data interchange format based on JavaScript object syntax.
+	Interacting with APIs: Many APIs return data in the form of objects, which can be manipulated and displayed in your application.
+
+
+https://www.youtube.com/watch?v=KGH6z0Z0GXA

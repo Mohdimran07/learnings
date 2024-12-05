@@ -1,0 +1,44 @@
+The best way to check if a language is single-threaded is if it has one call stack. 
+
+Call stack and Memory Heap in JS:-
+Memory Heap is where the allocation of variables, objects happen.
+Call stack is where the engine keeps tracks of where our code is in its execution.
+
+Stack OverFlow
+Stack overflow happens when we call functions nested inside each, other over and over again. 
+If we just keep adding functions to the stack without popping them off, we will have a stack overflow.
+
+	E.g: function inception(){
+		inception();
+	    }
+		inception();
+
+Garbage Collection:
+Javascript is a garbage-collected language. This means that if Javascript allocates memory, let's say within a function we create an object and 
+that object gets stored somewhere in our memory heap, automatically when we finish calling that object and if we don't need that object anymore, 
+and there is no reference to it in our program, Javascript is going to clean it up for us.
+
+Garbage collection in Javascript uses the Mark and sweep algorithm; when a reference to a variable is removed, its deleted
+
+
+3 common memory Leaks
+
+1) Global Variables
+var a = 1;
+var b =2;
+var c=3;
+
+ if I just keep adding these variables to my memory, all my memory  will eventually get used up because Iam  just using up memory. 
+Imagine if these were deeply nested objects, we will be using up a lot of memory.
+
+2) Event Listeners
+var element = document.getElementById(‘button’)
+element.addeventListener(‘click’, onClick)
+
+This is a common way to leak memory because you can just keep adding event listeners and you don't remove them when you no longer need them. 
+They will stay in the background and before you know, you have a memory leak.
+
+3) setInterval()
+If we put objects inside a setInterval(), they will never be garbage collected unless we remove the setInterval itself.
+So something to keep in mind is that memory is limited. When it comes to a call stack and memory Heap, those are two places is where javascript runs and stores memory. 
+So we have to be careful not to have memory leaks or stack overflow if we are to have efficient code.

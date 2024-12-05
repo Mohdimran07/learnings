@@ -1,0 +1,81 @@
+Objects
+In JavaScript, objects are one of the fundamental data types that allow you to store collections of key-value pairs.
+
+Key Characteristics of Objects:-
+	Key-Value Pairs: Objects consist of properties (keys) and their corresponding values. Keys are strings (or symbols), 
+		and values can be of any data type, including other objects or functions.
+
+	Dynamic Nature: You can add, modify, or delete properties dynamically after the object is created.
+
+	Inheritance: Objects can inherit properties and methods from other objects via prototypes.
+
+Creating Objects
+
+	Using Object Literals: 		const obj = {};
+	Using the Object Constructor : 	const obj = new Object();
+	Using Object.create: 		const dog = Object.create({})
+	Using Classes (ES6):		class Person {
+    						constructor(name, age) {
+       						 this.name = name;
+     						 this.age = age;
+  					  }
+
+   					 greet() {
+       						 console.log(`Hi, I'm ${this.name}`);
+    					}
+					}
+
+					const john = new Person("John", 25);
+					john.greet(); // Output: Hi, I'm John
+
+
+Inheritance and Prototypes in JavaScript
+	 inheritance is achieved through the prototype chain. Every object in JavaScript has a hidden property called [[Prototype]] 
+	 (accessible via __proto__ or Object.getPrototypeOf()), which links it to another object. This is the basis of prototypal inheritance.
+
+Prototype Chain:
+	When you try to access a property or method of an object, JavaScript first looks at the object itself.
+	If the property or method isn’t found, JavaScript checks the object’s prototype (and the prototype’s prototype, and so on) until it finds the property or reaches the end of the chain (null).
+E.G: 
+const animal = {
+    eat: function() {
+        console.log("Eating...");
+    }
+};
+
+const dog = Object.create(animal); // dog inherits from animal
+dog.bark = function() {
+    console.log("Woof!");
+};
+
+dog.eat(); // Output: Eating... (inherited from animal)
+dog.bark(); // Output: Woof!
+
+
+Prototype Chaining:- sportsCar → car → vehicle → Object.prototype → null;
+
+			const vehicle = {
+			    start: function() {
+			        console.log("Starting...");
+			    }
+			};
+
+			const car = Object.create(vehicle);
+			car.drive = function() {
+			    console.log("Driving...");
+			};
+
+			const sportsCar = Object.create(car);
+			sportsCar.race = function() {
+			    console.log("Racing...");
+			};
+
+
+			sportsCar.race();  // Output: Racing...
+			sportsCar.drive(); // Output: Driving... (from car)
+			sportsCar.start(); // Output: Starting... (from vehicle)
+
+key points: 
+	All objects ultimately inherit from Object.prototype, which provides methods like toString() and hasOwnProperty().
+	The __proto__ property is widely supported but considered deprecated; prefer Object.getPrototypeOf() and Object.setPrototypeOf() for prototype manipulation.
+	Avoid long prototype chains as they can impact performance during property lookup.

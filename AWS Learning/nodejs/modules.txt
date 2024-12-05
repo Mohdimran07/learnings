@@ -1,0 +1,65 @@
+Node.js
+
+Modules : 
+  -> a module is a piece of reusable JavaScript code.
+  -> They also help to break down complex logic into small, simple, and manageable chunks.
+ => Types of Node Modules
+ 
+	-> Built-in modules : Node.js comes with some modules out of the box. These modules are available for use when you install Node.js
+			 * http * url *path * fs * os
+				eg: const http = require('http') 
+
+				server = http.createServer((req, res) => { 
+ 				   res.writeHead(200, {'Content-Type': 'text/plain'}) 
+				    res.end('Hello World!')
+				})
+
+				server.listen(3000);
+
+
+	-> Local modules: you create local modules that you load and use in your program. 
+			CommonJS vs. ES modules in Node.js
+				-> CommonJS : CommonJS is a highly functional and effective module system that is used for server-side development in Node.js. 
+					    It was specifically designed to solve the complex problem of organizing code in large and intricate projects.
+					   * CommonJS is a synchronous module system. This means that when a module is imported, the code execution is blocked until 
+					     the module is loaded. 
+					   *  The module system uses the require function to import modules and the module.exports object to export modules.
+						e.g: // logger.js
+							function log(message) {
+							    const timestamp = new Date().toISOString();
+							    console.log(`${timestamp}: ${message}`);
+							}
+
+							module. Exports = log;
+				
+							// app.js
+							const log = require('./logger');
+
+						log("Starting the application...");
+							// Additional application logic.
+							log("Application is running");
+							// More application logic.
+						log("Application finished execution");
+				
+				-> ES Modules: ES Modules is a modern module system that is built into the JavaScript language. 
+					       ES Modules was created to solve the problem of managing dependencies in JavaScript projects, 
+					        both on the client-side and server-side.
+						Modern approach to JavaScript module management, using an asynchronous model for loading modules.
+						E.G: // logger.mjs
+							export function log(message) {
+							    const timestamp = new Date().toISOString();
+							    console.log(`${timestamp}: ${message}`);
+							}
+
+						  // app.mjs
+							import { log } from './logger.mjs';
+
+							log("Starting the application...");
+							// Additional application logic.
+							log("Application is running");
+							// More application logic.
+							log("Application finished execution");
+
+
+
+	-> Third-party modules :  The Node Package Manager (NPM) makes that possible. When you install Node.js, NPM comes along with it.

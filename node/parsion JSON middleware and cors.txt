@@ -1,0 +1,38 @@
+"app.use(express.json())" 
+	Purpose: It parses incoming requests with JSON payloads, making the data accessible via req.body.
+	Functionality: When a client sends a JSON payload in a request (typically in POST or PUT requests), 
+	  this middleware automatically converts the JSON string into a JavaScript object. 
+	  This allows you to easily handle and manipulate the data in your route handlers.
+
+How does express.json() differ from body-parser
+	"express.json()": This is a built-in middleware function in Express, introduced in version 4.16.0. 
+	                  It is specifically designed to parse incoming requests with JSON payloads and populate req.body with the parsed data.
+	
+	body-parser: This was originally a separate middleware package that provided various parsing functions, including JSON parsing. 
+	             Prior to Express 4.16.0, developers needed to install body-parser separately to handle JSON requests.
+
+	Functionality:-
+			Both express.json() and body-parser.json() perform the same function of parsing JSON request bodies. 
+			However, express.json() is now the recommended approach as it is more straightforward and reduces dependencies.
+			body-parser also includes other parsing methods, such as urlencoded, which are still relevant for handling different content types.
+
+
+"app.use(cors({ origin: true, credentials: true }))":
+	Purpose: CORS is a security feature that restricts web applications running at one origin from interacting with resources from another origin. 
+	         By using this middleware, you can control which domains are allowed to access your API.
+
+	// Specify allowed origins
+	const allowedOrigins = ['http://localhost:3000', 'https://example.com'];
+
+	app.use(cors({
+	    origin: function(origin, callback) {
+	        // Allow requests with no origin (like mobile apps or curl requests)
+	        if (!origin) return callback(null, true);
+	        if (allowedOrigins.indexOf(origin) === -1) {
+	            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+	            return callback(new Error(msg), false);
+	        }
+	        return callback(null, true);
+	    },
+	    credentials: true // Allow credentials (cookies, authorization headers, etc.)
+	}));

@@ -1,0 +1,231 @@
+pages => signup , login, dashboard
+services => auth, authguard
+
+
+features shared and core module
+shared => footer and header
+core => services
+
+├── src
+│   ├── app
+│   │   ├── auth
+│   │   │   ├── components
+│   │   │   │   ├── login
+│   │   │   │   │   ├── login.component.ts
+│   │   │   │   │   ├── login.component.html
+│   │   │   │   │   ├── login.component.css
+│   │   │   │   ├── register
+│   │   │   │   │   ├── register.component.ts
+│   │   │   │   │   ├── register.component.html
+│   │   │   │   │   ├── register.component.css
+│   │   │   │   ├── forgot-password
+│   │   │   │   │   ├── forgot-password.component.ts
+│   │   │   │   │   ├── forgot-password.component.html
+│   │   │   │   │   ├── forgot-password.component.css
+│   │   │   ├── services
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── auth.module.ts
+│   │   │   ├── auth.routing.module.ts
+│   │   │   ├── index.ts
+│   │   ├── user
+│   │   │   ├── components
+│   │   │   │   ├── profile
+│   │   │   │   │   ├── profile.component.ts
+│   │   │   │   │   ├── profile.component.html
+│   │   │   │   │   ├── profile.component.css
+│   │   │   │   ├── orders
+│   │   │   │   │   ├── orders.component.ts
+│   │   │   │   │   ├── orders.component.html
+│   │   │   │   │   ├── orders.component.css
+│   │   │   ├── services
+│   │   │   │   ├── user.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── user.module.ts
+│   │   │   ├── user.routing.module.ts
+│   │   │   ├── index.ts
+│   │   ├── products
+│   │   │   ├── components
+│   │   │   │   ├── product-list
+│   │   │   │   │   ├── product-list.component.ts
+│   │   │   │   │   ├── product-list.component.html
+│   │   │   │   │   ├── product-list.component.css
+│   │   │   │   ├── product-detail
+│   │   │   │   │   ├── product-detail.component.ts
+│   │   │   │   │   ├── product-detail.component.html
+│   │   │   │   │   ├── product-detail.component.css
+│   │   │   ├── services
+│   │   │   │   ├── product.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── products.module.ts
+│   │   │   ├── products.routing.module.ts
+│   │   │   ├── index.ts
+│   │   ├── cart
+│   │   │   ├── components
+│   │   │   │   ├── cart
+│   │   │   │   │   ├── cart.component.ts
+│   │   │   │   │   ├── cart.component.html
+│   │   │   │   │   ├── cart.component.css
+│   │   │   ├── services
+│   │   │   │   ├── cart.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── cart.module.ts
+│   │   │   ├── cart.routing.module.ts
+│   │   │   ├── index.ts
+│   │   ├── admin
+│   │   │   ├── components
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── dashboard.component.ts
+│   │   │   │   │   ├── dashboard.component.html
+│   │   │   │   │   ├── dashboard.component.css
+│   │   │   │   ├── user-management
+│   │   │   │   │   ├── user-management.component.ts
+│   │   │   │   │   ├── user-management.component.html
+│   │   │   │   │   ├── user-management.component.css
+│   │   │   │   ├── product-management
+│   │   │   │   │   ├── product-management.component.ts
+│   │   │   │   │   ├── product-management.component.html
+│   │   │   │   │   ├── product-management.component.css
+│   │   │   ├── services
+│   │   │   │   ├── admin.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── admin.module.ts
+│   │   │   ├── admin.routing.module.ts
+│   │   │   ├── index.ts
+│   │   ├── shared
+│   │   │   ├── components
+│   │   │   │   ├── header
+│   │   │   │   │   ├── header.component.ts
+│   │   │   │   │   ├── header.component.html
+│   │   │   │   │   ├── header.component.css
+│   │   │   │   ├── footer
+│   │   │   │   │   ├── footer.component.ts
+│   │   │   │   │   ├── footer.component.html
+│   │   │   │   │   ├── footer.component.css
+│   │   │   ├── index.ts
+│   ├── app-routing.module.ts  
+│   ├── app.component.ts
+│   ├── app.component.html
+│   ├── app.component.css
+│   ├── app.module.ts
+│   ├── not-found.component.ts
+│   ├── environment.ts
+│   ├── main.ts
+
+
+
+
+
+
+
+=======================================================================
+                    Modules
+=======================================================================
+
+├── src
+│   ├── app
+│   │   ├── core
+│   │   │   ├── services
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── user.service.ts
+│   │   │   │   ├── product.service.ts
+│   │   │   │   ├── cart.service.ts
+│   │   │   │   ├── admin.service.ts
+│   │   │   ├── guards
+│   │   │   │   ├── auth.guard.ts
+│   │   │   ├── interceptors
+│   │   │   │   ├── token.interceptor.ts
+│   │   │   ├── core.module.ts
+│   │   │   ├── index.ts
+│   │   ├── shared
+│   │   │   ├── components
+│   │   │   │   ├── header
+│   │   │   │   │   ├── header.component.ts
+│   │   │   │   │   ├── header.component.html
+│   │   │   │   │   ├── header.component.css
+│   │   │   │   ├── footer
+│   │   │   │   │   ├── footer.component.ts
+│   │   │   │   │   ├── footer.component.html
+│   │   │   │   │   ├── footer.component.css
+│   │   │   ├── pipes
+│   │   │   │   ├── custom.pipe.ts
+│   │   │   ├── directives
+│   │   │   │   ├── highlight.directive.ts
+│   │   │   ├── shared.module.ts
+│   │   │   ├── index.ts
+│   │   ├── features
+│   │   │   ├── auth
+│   │   │   │   ├── components
+│   │   │   │   │   ├── login
+│   │   │   │   │   │   ├── login.component.ts
+│   │   │   │   │   │   ├── login.component.html
+│   │   │   │   │   │   ├── login.component.css
+│   │   │   │   │   ├── register
+│   │   │   │   │   │   ├── register.component.ts
+│   │   │   │   │   │   ├── register.component.html
+│   │   │   │   │   │   ├── register.component.css
+│   │   │   │   ├── auth.module.ts
+│   │   │   │   ├── auth.routing.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── user
+│   │   │   │   ├── components
+│   │   │   │   │   ├── profile
+│   │   │   │   │   │   ├── profile.component.ts
+│   │   │   │   │   │   ├── profile.component.html
+│   │   │   │   │   │   ├── profile.component.css
+│   │   │   │   │   ├── orders
+│   │   │   │   │   │   ├── orders.component.ts
+│   │   │   │   │   │   ├── orders.component.html
+│   │   │   │   │   │   ├── orders.component.css
+│   │   │   │   ├── user.module.ts
+│   │   │   │   ├── user.routing.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── products
+│   │   │   │   ├── components
+│   │   │   │   │   ├── product-list
+│   │   │   │   │   │   ├── product-list.component.ts
+│   │   │   │   │   │   ├── product-list.component.html
+│   │   │   │   │   │   ├── product-list.component.css
+│   │   │   │   │   ├── product-detail
+│   │   │   │   │   │   ├── product-detail.component.ts
+│   │   │   │   │   │   ├── product-detail.component.html
+│   │   │   │   │   │   ├── product-detail.component.css
+│   │   │   │   ├── products.module.ts
+│   │   │   │   ├── products.routing.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── cart
+│   │   │   │   ├── components
+│   │   │   │   │   ├── cart
+│   │   │   │   │   │   ├── cart.component.ts
+│   │   │   │   │   │   ├── cart.component.html
+│   │   │   │   │   │   ├── cart.component.css
+│   │   │   │   ├── cart.module.ts
+│   │   │   │   ├── cart.routing.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   ├── admin
+│   │   │   │   ├── components
+│   │   │   │   │   ├── dashboard
+│   │   │   │   │   │   ├── dashboard.component.ts
+│   │   │   │   │   │   ├── dashboard.component.html
+│   │   │   │   │   │   ├── dashboard.component.css
+│   │   │   │   │   ├── user-management
+│   │   │   │   │   │   ├── user-management.component.ts
+│   │   │   │   │   │   ├── user-management.component.html
+│   │   │   │   │   │   ├── user-management.component.css
+│   │   │   │   │   ├── product-management
+│   │   │   │   │   │   ├── product-management.component.ts
+│   │   │   │   │   │   ├── product-management.component.html
+│   │   │   │   │   │   ├── product-management.component.css
+│   │   │   │   ├── admin.module.ts
+│   │   │   │   ├── admin.routing.module.ts
+│   │   │   │   ├── index.ts
+│   │   ├── app-routing.module.ts  
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.module.ts
+│   │   ├── not-found.component.ts
+│   ├── environments
+│   │   ├── environment.ts
+│   │   ├── environment.prod.ts
+│   ├── main.ts

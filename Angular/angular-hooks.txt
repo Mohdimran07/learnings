@@ -1,0 +1,48 @@
+Angular lifecycle hooks
+-----------------------
+
+ngOnChanges
+ngOnInit
+ngDoCheck
+ngAfterContentInit
+ngAfterContentChecked
+ngAfterViewInit
+ngAfterViewChecked
+ngOnDestroy
+
+=> Before diving into the lifecycle hooks, we need to understand the change detection cycle.
+   Change detection is the mechanism by which angular keeps the template in sync with the component
+   During the change detection cycle, angular checks every bound property in the template with that of the component class. 
+   If it detects any changes, it updates the DOM.						 
+
+==> Constructor:
+    -----------
+	1) The first method that gets invoked is class Constructor.
+	2) It is neither a life cycle hook nor is it specific to Angular.  It is a Javascript feature. It is a method that is invoked when a class is created. 
+	3) Angular makes use of a constructor to inject dependencies.
+	4) Once Angular instantiates the class, It kick-starts the first change detection cycle of the component.
+
+ngOnChanges:- 
+------------
+It invokes whenever any data-bound input property of the component or directive changes.
+Initializing the Input properties is the first task angular carries during the change detection cycle.
+We use this life cycle hook in the tutorial Passing data to the child component.
+
+ngOnInit:-
+----------
+It invokes after it creates the component and updates its input properties. It raises it after the ngOnChanges hook.
+This hook is fired only once and immediately after its creation.
+This is a perfect place where you want to add any initialization logic for your component.
+You can use them in HTTP get requests to get the data from the back-end server or run some initialization logic etc.
+
+ngDoCheck:-
+----------
+This hook event during every change detection cycle. This hook is invoked even if there is no change in any of the properties.
+Angular invoke it after the ngOnChanges & ngOnInit hooks.
+We use this hook to Implement a custom change detection whenever Angular fails to detect the changes made to Input properties.
+
+ngAfterContentInit:-
+--------------------
+This Life cycle hook is called after the Component’s projected content has been fully initialized.
+This hook is also raised, even if there is no content to project.
+ 

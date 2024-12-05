@@ -1,0 +1,17 @@
+Learning Nextjs 14v
+
+=> Client and server components
+	-> By default in nextjs everything is servercomponent and to convert it into client comp 
+	    we have to mention at top of the file as "use client"so that we can use react hooks
+
+ -> whenever we creating a component we have to use page.jsx to render the component.
+ -> How we structure the folder thats how the routing works.
+	-->app/
+	    -->products/   ->>nested routes.
+ -> dynamic routes -->app/
+			--> products/
+				-->[details]/
+					-->page.jsx 
+ -> for n number of slug likes /products/1/2/3/4 we have to use [...product-review] folder to catch all the slug.
+
+ 

@@ -1,0 +1,163 @@
+View Main
+
+  const renderTable = () => (
+    <>
+      <Box sx={{ width: "100%" }} className="search-box">
+        <Search className="search-icon" />
+        <TextField
+          variant="outlined"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="search-input"
+        />
+      </Box>
+      <TableContainer component={Paper} className="table-container">
+        <Table className="table" aria-label="simple table">
+          <TableHead className="table-header">
+            <TableRow>
+              <TableCell className="table-header-cell">TXID</TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Recipient
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Reference
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Channel
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Partition
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Timestamp
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Source
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Message Class
+              </TableCell>
+              <TableCell align="right" className="table-header-cell">
+                Actions
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => (
+                <TableRow
+                  key={row.txid}
+                  className={index % 2 === 0 ? "even-row" : "odd-row"}
+                >
+                  <TableCell component="th" scope="row" className="table-cell">
+                    {row.txid}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.recipient}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.reference}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.channel}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.partition}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {new Date(row.timestamp).toLocaleString()}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.source}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    {row.messageClass}
+                  </TableCell>
+                  <TableCell align="right" className="table-cell">
+                    <Button
+                      className="button"
+                      onClick={() => handleClickOpen(row)}
+                    >
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 64 * emptyRows }}>
+                <TableCell colSpan={9} />
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={data.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          className="pagination"
+        />
+      </TableContainer>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Message Details</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <Typography variant="body1">
+              <strong>TXID:</strong> {selectedRow?.txid}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Recipient:</strong> {selectedRow?.recipient}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Reference:</strong> {selectedRow?.reference}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Channel:</strong> {selectedRow?.channel}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Partition:</strong> {selectedRow?.partition}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Timestamp:</strong>{" "}
+              {new Date(selectedRow?.timestamp).toLocaleString()}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Source:</strong> {selectedRow?.source}
+            </Typography>
+            <Typography variant="body1">
+              <strong>Message Class:</strong> {selectedRow?.messageClass}
+            </Typography>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+
+
+
+ // <Box className="view-messages-container">
+    //   <TabContext value={value}>
+    //     <Box className="tabs-container">
+    //       <TabList onChange={handleChange} aria-label="tabs">
+    //         <Tab label="Recipient" value="1" />
+    //         <Tab label="Transaction" value="2" />
+    //         <Tab label="Channel" value="3" />
+    //         <Tab label="All" value="4" />
+    //         <Tab label="Reference" value="5" />
+    //       </TabList>
+    //     </Box>
+    //     <TabPanel value="1">{renderTable()}</TabPanel>
+    //     <TabPanel value="2">{renderTable()}</TabPanel>
+    //     <TabPanel value="3">{renderTable()}</TabPanel>
+    //     <TabPanel value="4">{renderTable()}</TabPanel>
+    //     <TabPanel value="5">{renderTable()}</TabPanel>
+    //   </TabContext>
+    // </Box>

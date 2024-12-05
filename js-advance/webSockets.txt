@@ -1,0 +1,53 @@
+The WebSocket API:-
+
+ -> It is a powerful technology that facilitates two-way 
+	interactive communication between a client (typically a web browser) and a server.
+ -> It allows for real-time data exchange without the need for constant polling, making it particularly useful for 
+	applications requiring instantaneous updates, such as chat applications, online gaming, and 
+	live financial data streaming.
+
+Key Features of WebSocket API:-
+
+1) Bidirectional Communication:- WebSockets enable full-duplex communication, meaning both the client and server can send and receive messages independently. 
+2. Persistent Connection:- Once established, a WebSocket connection remains open, allowing continuous data flow between the client and server. 
+3. Event-Driven Model:- The WebSocket API operates on an event-driven model, where specific events trigger actions. For example, a message event occurs when data is received from the server, allowing developers to handle incoming data dynamically.
+4. Efficiency:- WebSockets are more efficient for real-time applications because they eliminate the need for repeated HTTP requests. 
+
+How WebSocket API Works:-
+
+1. Establishing a Connection: 
+	-> Handshake: The process begins with an HTTP request from the client to the server to upgrade the connection to a WebSocket. This includes specific headers like Sec-WebSocket-Key to verify the client's intent.
+	-> Upgrade: If the server supports WebSockets, it responds with an acceptance header (Sec-WebSocket-Accept), completing the handshake and establishing a WebSocket connection.
+2. Data Transmission: 
+	-> After the connection is established, both parties can send messages at any time using the send() method.
+	-> Messages can be in text or binary format, allowing flexibility in data handling.
+3. Closing the Connection:
+	-> The connection can be closed by either party using the close() method or automatically if one side disconnects. A CloseEvent is triggered to notify both parties of this closure.
+
+Use Cases: 
+	WebSockets are ideal for applications that require real-time communication capabilities:
+		Chat Applications: Instant message delivery without refreshing.
+		Online Gaming: Continuous data exchange for player actions.
+		Financial Trading Platforms: Real-time updates on stock prices or trading activities
+
+	open: Triggered when the connection is successfully established.
+	message: Triggered when a message is received from the server.
+	close: Triggered when the connection is closed.
+	error: Triggered when an error occurs during communication.
+
+
+// Create a new WebSocket instance
+const socket = new WebSocket("ws://example.com/socket");
+
+// Listen for the connection to open
+socket.addEventListener("open", (event) => {
+    socket.send("Hello Server!");
+});
+
+// Listen for messages from the server
+socket.addEventListener("message", (event) => {
+    console.log("Message from server:", event.data);
+});
+
+// Close the connection
+socket.close();

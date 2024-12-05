@@ -1,0 +1,86 @@
+How can I merge objects with the same key without overwriting the parent object
+What is the best method to add new properties to a parent object without changing existing ones
+How do I ensure that nested objects are properly merged without conflicts
+Can I use spread operator to add new properties to an object safely
+How do I handle deep nested objects with the same key in JavaScript
+
+How can I merge nested objects without overwriting parent objects
+What is the best way to merge objects with the same key in an array
+Can I use the spread operator to merge objects without overwriting values
+How do I handle duplicate keys when merging objects in JavaScript
+Are there any libraries that can help with merging objects without overwriting
+
+const array = [
+    { name: "foo1", value: "val1" },
+    { name: "foo1", value: ["val2", "val3"] },
+    { name: "foo2", value: "val4" }
+];
+
+const output = mergeObjects(array);
+console.log(output);
+
+const mergeObjects = (arr) => {
+    return Object.values(arr.reduce((acc, curr) => {
+        Object.entries(curr).forEach(([key, value]) => {
+            if (acc[key]) {
+                if (Array.isArray(acc[key])) {
+                    acc[key].push(value);
+                } else {
+                    acc[key] = [acc[key], value];
+                }
+            } else {
+                acc[key] = value;
+            }
+        });
+        return acc;
+    }, {}));
+};
+
+[
+    { name: "foo1", value: ["val1", "val2", "val3"] },
+    { name: "foo2", value: ["val4"] }
+]
+
+
+Basic to intermediate => 
+
+Explain the difference between dot notation and bracket notation for accessing object properties.
+What is the this keyword in JavaScript objects, and how does it work?
+How do you create an empty object in JavaScript?
+What is the purpose of the Object.keys() and Object.values() methods?
+How do you check if a property exists in an object?
+What is the difference between Object.freeze() and Object.seal()?
+How do you clone an object in JavaScript?
+What is the prototype property of an object?
+Explain the concept of object-oriented programming (OOP) and its relationship to JavaScript objects.
+
+How can you merge multiple arrays into a single array while preserving duplicate elements?
+Given two objects, how would you create a new object containing only the properties that exist in both objects?
+Describe a function to flatten a deeply nested object into a single-level object.
+How can you efficiently find the most frequent element in an array of numbers?
+Implement a function to remove duplicate elements from an array while preserving order.
+
+Intermediate to Advanced:
+
+How do you implement inheritance in JavaScript using prototypes?
+What are the different ways to create objects in JavaScript (object literals, constructors, classes)?
+Explain the concept of closures in the context of object methods.
+How do you handle circular references in JavaScript objects?
+What is the difference between a mutable and immutable object?
+How do you optimize object creation and manipulation for performance?
+What are the common anti-patterns in object-oriented JavaScript?
+How do you implement a factory pattern in JavaScript?
+Explain the concept of polymorphism in JavaScript.
+
+Given an array of objects, how would you group them based on a specific property?
+Explain the difference between shallow copy and deep copy in JavaScript. When would you use each?
+How can you optimize the performance of a function that processes a large array of data?
+Implement a function to check if two objects are deeply equal.
+Describe a data structure that efficiently supports insertion, deletion, and searching of elements.
+
+Real-world Applications:
+How would you implement a shopping cart system using JavaScript?
+Design a data structure to represent a graph and implement basic graph algorithms (e.g., depth-first search, breadth-first search).
+How would you build a simple recommendation system based on user preferences?
+Implement a function to parse a complex JSON object and extract specific information.
+Design a data structure to efficiently store and retrieve user data in a web application.

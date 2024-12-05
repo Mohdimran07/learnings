@@ -1,0 +1,59 @@
+Scope in JavaScript:-
+	scope in JavaScript refers to the context or environment in which variables are declared and can be accessed.
+ There are 3 types of scope i.e.., global, local and block scope.
+
+ * These scopes control the accessibility of variables in different parts of your code 
+	and play a pivotal role in maintaining code organization and preventing variable conflicts.
+
+1) GLOBAL SCOPE :-
+	Variables declared in gloal scope are accessible from anywhere in the code, whether's its inside functions, conditions statments, loops or other block of code.
+	
+	Potential Issues with Global Scope
+		Since global variables are accessible from anywhere, if multiple parts of your code modify the same global variable, 
+			it can lead to unexpected behaviors and bugs that are hard to track down.
+
+	Best Practices for Using Global Scope
+		1) Use global scope sparingly: Only declare variables in global scope when they genuinely need to be accessed globally.
+		2) Avoid overwriting global variables: Be cautious when modifying global variables to prevent unintended side effects.
+		3) Use descriptive variable names: Choose variable names that clearly convey their purpose, 
+			especially in global scope where they can affect many parts of your code.
+
+2) LOCAL SCOPE or FUNCTION SCOPE: -
+	Variable in local scope is limited in visibility to the block of code, function, or condition statement in which it is defined.
+	those variables are protected from interference or modification of code outside their scope.
+
+	The Concept of Variable Shadowing:
+		Variable shadowing occurs when you declare a variable with the same name inside a local scope, 
+			effectively "hiding" the variable with the same name in a higher scope.
+
+	var message = "Global message";
+
+		function showMessage() {
+	  var message = "Local message"; // This "shadows" the global variable
+	  console.log(message); // Accessing the local variable
+			}
+
+	showMessage();
+	console.log(message);
+
+	Benefits of Using Local Scope:-
+	Isolation: It prevents unintended interference with variables in other parts of your code, reducing the risk of bugs and conflicts.
+
+	Modularity: It allows you to compartmentalize your code, making it more manageable and easier to maintain.
+
+	Reusability: Variables in local scope can be defined and used within specific functions or blocks, promoting code reusability without affecting the rest of your program.
+
+3) Block Scope
+	Unlike global and local scopes, which are defined by functions or global context, block scope is created within specific code blocks, 
+	such as conditional statements (if, else, switch) and loops (for, while).
+		e.g: if (true) {
+			  let blockVariable = "I'm in block scope";
+			  console.log(blockVariable);
+			}
+
+
+4) Scope Chain
+	This process of searching for variables through multiple scopes is known as the "scope chain."
+	When you reference a variable, JavaScript searches for it starting from the current local or block scope) and moves down through the sheets, 
+looking in each scope until it finds the variable in global scope.
+

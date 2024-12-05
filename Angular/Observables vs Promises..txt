@@ -1,0 +1,62 @@
+Difference b/w Observables and Promises.
+
+=> Observables and promises are both used for handling asynchronous operations in JavaScript, 
+   but they have some key differences:
+
+ * Observables
+	-> Observables are lazy. They don't execute until a subscriber is attached.
+	-> Observables can emit multiple values over time.
+	-> Observables provide operators like map, filter, reduce, etc. to transform the emitted values.
+	-> Observables can handle error and completion notifications.
+	-> Observables use the observer pattern, where the subscriber is notified whenever a value is emitted.
+
+	   // Observables
+		import { Observable } from 'rxjs';
+
+		const observable = new Observable((observer) => {
+		  setTimeout(() => {
+		    observer.next('Hello, Observable!');
+		    observer.complete();
+		  }, 2000);
+		});
+
+		observable.subscribe({
+		  next: (value) => {
+		    console.log(value);
+		  },
+		  error: (error) => {
+		    console.error(error);
+		  },
+		  complete: () => {
+		    console.log('Observable completed');
+		  },
+		});
+====================================================================================================================================================
+
+ * Promises :-
+	-> Promises execute immediately after creation.
+	-> Promises can only emit one value (success or failure).
+	-> Promises have limited built-in methods like then, catch, and finally.
+	-> Promises can only handle a single error or a single success notification.
+	-> Promises use the then/catch pattern to handle asynchronous operations.
+
+	  // Promises
+	const promise = new Promise((resolve, reject) => {
+	  setTimeout(() => {
+	    resolve('Hello, Promise!');
+	  }, 2000);
+	});
+
+	promise
+	  .then((value) => {
+	    console.log(value);
+	  })
+	  .catch((error) => {
+	    console.error(error);
+	  });
+
+==================================================================================================================================================
+
+Conclusion: Promises are good for simple asynchronous operations that return a single value, 
+		while observables are more powerful and flexible, 
+		especially when dealing with multiple asynchronous events or when you need to transform or combine streams of data.

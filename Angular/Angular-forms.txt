@@ -1,0 +1,138 @@
+Form-Fundamentails:-
+---------------------
+
+=> It can contain large no of input fields, Spanning multiple tabs.
+=> Angular takes two approaches to build the forms.
+	1) Template-driven Forms
+	2) Reactive Forms
+=> The Angular Forms module consists of four Building blocks, 
+   irrespective of whether you are using Template-driven (Except FormRecord) or Reactive forms approach.
+	-> FormControl - represents a single input field in an Angular form.
+			 The FormControl is an object that encapsulates all this information related to the single input element. 
+   			 It Tracks the value and validation status of each of these control.
+				E.g: let firstname= new FormControl(''); 
+			Then, you can retrieve the current value in the input field using the value property
+				firstname.value   //Returns the value of the first name field
+ 				firstname.errors      // returns the list of errors
+				firstname.dirty       // true if the value has changed (dirty)
+				firstname.touched     // true if input field is touched
+				firstname.valid       // true if the input value has passed all the validation
+
+
+	-> FormGroup - is a collection of FormControls.
+			Each FormControl is a property in a FormGroup with the control name as the key.
+			 It is helpful to have a simple way to manage the Form controls together.
+			E.g:  Imagine Form having large no of fields. It is cumbersome to loop over large no of FormControls and check for validity.
+				FormGroup solve’s this issue by providing a wrapper interface around a collection of FormControls.
+					let address= new FormGroup({
+    					    street : new FormControl(""),
+    					    city : new FormControl(""),
+    					    pinCode : new FormControl("")
+					 })
+	-> FormArray - is an array of form controls.
+			E.g: contactForm = new FormGroup( {
+   			     name: new FormControl(''),
+                            cities:new FormArray([
+     				   new FormControl('Mumbai'),
+     				   new FormControl('Delhi') ])
+  			});
+
+		You can get the reference to the cities from the contactForm.get method
+
+	-> FormRecord -  is also a collection of FormControl. It allows us to add FormControl’s dynamically at run time.
+				cities!: FormRecord<FormControl<string | null>>;
+			Now, you can add new FormControl to cities FormRecord. In the example below a new FormControl with key mumbai and delhi added to the cities FormRecord.
+			this.cities.addControl('mumbai', new FormControl(''));
+                        this.cities.addControl('delhi', new FormControl(''));
+
+
+
+	Template-driven form : In Template Driven Forms we specify behaviors/validations using directives and attributes in our template and let it work behind the scenes.
+				 All things happen in Templates hence very little code is required in the component class. 
+		=> The Template-driven forms :
+			-> The form is set up using ngForm directive.
+			-> controls are set up using the ngModel directive.
+			-> ngModel also provides the two-way data binding.
+			-> The Validations are configured in the template via directives.
+			
+			-> Difficult to add controls dynamically.
+			-> Unit testing is a challenge.
+
+		=> To work with Template-driven forms, we must import the FormsModule.
+			-> The FormsModule contains all the form directives and constructs for working with forms.
+				Open the app.module.ts and add the following import.
+				import { FormsModule } from '@angular/forms';
+ 	 			  imports: [
+    					BrowserModule,
+   					 AppRoutingModule,
+    					FormsModule                    //Add in Imports Array
+  				 ],
+
+			-> HTML Form
+				When we include FormsModule, the Angular is going to look out for any <form> tag in our HTML template.
+				The ngForm directive automatically detects the <form> tag and automatically binds to it		
+			
+				-> The ngForm does the following
+					1) Binds itself to the <Form> directive
+					2) Creates a top-level FormGroup instance
+					3) Creates FormControl instance for each of child control, which has ngModel directive.
+					4) Creates FormGroup instance for each of the  NgModelGroup directive.
+	
+				<form #contactForm="ngForm">
+				
+				-> ngModel will use the name attribute to create the FormControl instance for each of the Form field it is attached.
+	
+				<input type="text" name="firstname" ngModel>
+				<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+		
+
+				<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+ 
+  <p>
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" ngModel #fname="ngModel">
+  </p>
+ 
+  <p>
+    <label for="lastname">Last Name</label>
+    <input type="text" name="lastname" ngModel>
+  </p>
+ 
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email" ngModel>
+  </p>
+ 
+  <p>
+    <label for="gender">Geneder</label>
+    <input type="radio" value="male" name="gender" ngModel> Male
+    <input type="radio" value="female" name="gender" ngModel> Female
+  </p>
+ 
+  <p>
+    <label for="isMarried">Married</label>
+    <input type="checkbox" name="isMarried" ngModel>
+  </p>
+ 
+  <p>
+    <label for="country">Country</label>
+      <select name="country" ngModel>
+        <option [ngValue]="c.id" *ngFor="let c of countryList">
+          {{c.name}}
+        </option>
+      </select>
+  </p>
+ 
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+  
+</form>
+ 
+
+<pre>Value : {{contactForm.value | json }} </pre>
+<pre>Valid : {{contactForm.valid}} </pre>
+<pre>Touched : {{contactForm.touched  }} </pre>
+<pre>Submitted : {{contactForm.submitted  }} </pre>
+
+

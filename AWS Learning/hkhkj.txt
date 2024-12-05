@@ -1,0 +1,5 @@
+Frontend: React, Clerk, Material-UI, styled-components, React Router, Socket.IO
+Backend: Node.js, Express.js, Mongoose, Socket.IO
+Database: MongoDB, MongoDB Atlas
+
+

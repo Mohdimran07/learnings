@@ -1,0 +1,20 @@
+How JS is executed?
+
+Each browser has a JS Engine to execute js in browsers.
+	V8 on chrome
+	JavaScriptCore on safari
+	SpiderMonkey on Mozilla.
+	Chakra on Microsoft Edge. and many other Js Engine that run within web browser
+
+At First,the js engine do parsing (means converts the source code into tokens (like let, const, functions etc..,) , 
+operators , literals, and identifiers)  and then this js engine passes this tokens to create the abstract syntax tree(AST).
+
+the next step is compilation (JIT=> Just In Time uses by modern code ) where js code complies into machine code so that it can be executed.
+
+after that we can see the effects of our code in browser so in this step our engine starts to interpret our js code which is executed 
+by the Javascript virtual machine and once it is executed we can see the effect on our web broswer in chorme.
+
+And once it is executed it also goes through garbage collection step it scans and cleans up the unused variable and unreachable memory
+
+And in the last step we have the event loop , basically since js is a single threaded synchronous language so it cannot perform
+time consuming operations synchronolous and this event loop continous checks the call stack.
